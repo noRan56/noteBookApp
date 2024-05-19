@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task/OTP/signIn.dart';
 import 'package:task/repository/SignDB.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -104,7 +105,13 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
               SizedBox(height: 20),
               ElevatedButton(
-                onPressed: _submit,
+                onPressed: () {
+                  _submit;
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SignInPage()),
+                  );
+                },
                 child: Text('Sign Up'),
               ),
             ],

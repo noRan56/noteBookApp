@@ -34,9 +34,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(top: 50, bottom: 50.0),
-                    child: SvgPicture.asset(
-                      controller.items[index].logo,
-                      width: 170,
+                    child: Image(
+                      image: AssetImage(
+                        controller.items[index].logo,
+                      ),
+                      width: 200,
                       height: 70,
                       fit: BoxFit.contain,
                     ),
@@ -46,8 +48,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     children: [
                       Padding(
                         padding: EdgeInsets.only(top: 50.0, bottom: 10.0),
-                        child: SvgPicture.asset(
-                          controller.items[index].image,
+                        child: Image(
+                          image: AssetImage(
+                            controller.items[index].image,
+                          ),
                           width: 280,
                           height: 290,
                           fit: BoxFit.contain,
@@ -103,6 +107,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         style: TextStyle(
                           fontSize: 17,
                           fontWeight: FontWeight.w500,
+                          color: Colors.white,
                         ),
                       ),
                     ),

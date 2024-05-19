@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:task/OTP/OTP-Pages.dart';
+import 'package:task/OTP/sign_up.dart';
 import 'package:task/repository/SignDB.dart';
 import 'package:task/screens/home/home_screen.dart';
 import 'sign_up_page.dart';
@@ -103,7 +105,7 @@ class _SignInPageState extends State<SignInPage> {
                     context,
                     MaterialPageRoute(
                         builder: (context) =>
-                            HomeScreen()), // Navigate to SignUpPage
+                            SignUpPage()), // Navigate to SignUpPage
                   );
                 },
                 child: Text('Don\'t have an account? Sign up'),

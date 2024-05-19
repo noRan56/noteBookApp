@@ -23,7 +23,9 @@ class ItemNote extends StatelessWidget {
                       const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: Color.fromARGB(255, 5, 117, 157),
+                    color: (note.id ?? 0) % 2 == 0
+                        ? Color.fromARGB(255, 230, 207, 2)
+                        : Colors.blue,
                   ),
                   child: Column(
                     children: [
