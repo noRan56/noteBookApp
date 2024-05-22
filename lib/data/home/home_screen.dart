@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:task/provider/notes/notes_provider.dart';
-import 'package:task/repository/notes_repository.dart';
-import 'package:task/screens/home/widgets/item_note.dart';
-import 'package:task/screens/add-node/add_note_screen.dart';
+import 'package:task/data/home/widgets/item_note.dart';
+import 'package:task/data/insertNotes/add_note_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -17,6 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text('MY Daily'),
         centerTitle: true,
       ),

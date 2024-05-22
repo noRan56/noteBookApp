@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:task/DB/DB.dart';
 import 'package:task/OTP/OTP-Pages.dart';
 import 'package:task/OTP/sign_up.dart';
-import 'package:task/repository/SignDB.dart';
-import 'package:task/screens/home/home_screen.dart';
-import 'sign_up_page.dart';
+import 'package:task/data/home/home_screen.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({Key? key}) : super(key: key);
@@ -20,15 +19,13 @@ class _SignInPageState extends State<SignInPage> {
   Future<void> _submit() async {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-      var user = await DatabaseHelper().authenticateUser(_username, _password);
+      var user = await DB().authenticateUser(_username, _password);
       if (user != null) {
         ScaffoldMessenger.of(context)
             .showSnackBar(SnackBar(content: Text('Login successful!')));
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(
-              builder: (context) =>
-                  HomeScreen()), // Navigate to home on successful login
+          MaterialPageRoute(builder: (context) => HomeScreen()),
         );
       } else {
         ScaffoldMessenger.of(context)
@@ -46,7 +43,7 @@ class _SignInPageState extends State<SignInPage> {
           key: _formKey,
           child: Column(
             children: [
-              SizedBox(height: 30),
+              SizedBox(height: 50),
               Text(
                 "Sign In",
                 textAlign: TextAlign.center,

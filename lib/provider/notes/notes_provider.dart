@@ -1,28 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:task/DB/DB.dart';
 import 'package:task/models/node.dart';
-import 'package:provider/provider.dart';
-import 'package:task/repository/notes_repository.dart';
 
 class NotesProvider with ChangeNotifier {
   List<Note> notes = [];
-  getNotes() async {
-    notes = await NotesRepository.getNotes();
+  NotesProvider() {
+    getNotes();
+  }
+  Future<void> getNotes() async {
+    notes = await DB().getNotes();
     notifyListeners();
   }
 
-  insert({required Note note}) async {
-    await NotesRepository.insert(note: note);
-    getNotes();
+  Future<void> insert({required Note note}) async {
+    await DB().insertNote(note: note);
+    await getNotes();
   }
 
-  update({required Note note}) async {
-    await NotesRepository.update(note: note);
-    getNotes();
+  Future<void> update({required Note note}) async {
+    await DB().updateNote(note: note);
+    await getNotes();
   }
 
   Future<bool> delete({required Note note}) async {
-    await NotesRepository.delete(note: note);
-    getNotes();
+    await DB().deleteNote(note: note);
+    await getNotes();
     return true;
   }
 }

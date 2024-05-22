@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:task/OTP/signIn.dart';
-import 'package:task/repository/SignDB.dart';
+import 'package:task/DB/DB.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -19,8 +19,7 @@ class _SignUpPageState extends State<SignUpPage> {
   Future<void> _submit() async {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-      await DatabaseHelper()
-          .registerUser(_username, _email, _phoneNumber, _password);
+      await DB().registerUser(_username, _email, _phoneNumber, _password);
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text('User registered!')));
       Navigator.pop(context); // Navigate back to the sign-in page
@@ -35,7 +34,7 @@ class _SignUpPageState extends State<SignUpPage> {
         child: Form(
           key: _formKey,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SizedBox(
                 height: 30,
@@ -105,14 +104,17 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
               SizedBox(height: 20),
               ElevatedButton(
+                onPressed: _submit,
+                child: Text('Sign Up'),
+              ),
+              TextButton(
                 onPressed: () {
-                  _submit;
-                  Navigator.push(
+                  Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(builder: (context) => SignInPage()),
                   );
                 },
-                child: Text('Sign Up'),
+                child: Text('Have an account? Sign In'),
               ),
             ],
           ),

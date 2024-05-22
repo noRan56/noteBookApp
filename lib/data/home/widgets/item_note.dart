@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:task/models/node.dart';
-import 'package:task/screens/add-node/add_note_screen.dart';
+import 'package:task/data/insertNotes/add_note_screen.dart';
 
 class ItemNote extends StatelessWidget {
   final Note note;

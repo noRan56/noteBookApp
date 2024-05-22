@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:task/OTP/OTP-Pages.dart';
 import 'package:task/OTP/sign_up.dart';
 import 'package:task/provider/notes/notes_provider.dart';
-import 'package:task/screens/home/home_screen.dart';
+import 'package:task/data/home/home_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
